@@ -264,10 +264,24 @@ return Html::a($this->id, $url, $options);
  *
  */
 public function getUserLink() {
-}
 $url = Url::to(['user/view', 'id'=>$this->Id]); $options = [];
 return Html::a($this->username, $url, $options);
 }
 
+
+public function attributeLabels() {
+return [
+/* Your other attribute labels */
+  'roleName' => Yii::t('app', 'Role'),
+  'statusName' => Yii::t('app', 'Status'),
+  'profileId' => Yii::t('app', 'Profile'),
+  'profileLink' => Yii::t('app', 'Profile'),
+  'userLink' => Yii::t('app', 'User'),
+  'username' => Yii::t('app', 'User'),
+  'userTypeName' => Yii::t('app', 'User Type'),
+  'userTypeId' => Yii::t('app', 'User Type'),
+  'userIdLink' => Yii::t('app', 'ID'),
+];
+}
 
 }
