@@ -20,7 +20,7 @@ use yii\db\Expression;
  * @property string $birthdate
  * @property integer $gender_id
  * @property string $created_at
- * @property string $updatead_at
+ * @property string $updated_at
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -41,7 +41,7 @@ class Profile extends \yii\db\ActiveRecord
             [['user_id', 'gender_id'], 'required'],
             [['user_id', 'gender_id'], 'integer'],
             [['first_name', 'last_name'], 'string'],
-            [['birthdate', 'created_at', 'updatead_at'], 'safe'],
+            [['birthdate', 'created_at', 'updated_at'], 'safe'],
             [['gender_id'],'in', 'range'=>array_keys($this->getGenderList())]
         ];
     }
@@ -59,7 +59,7 @@ class Profile extends \yii\db\ActiveRecord
             'birthdate' => 'Birthdate',
             'gender_id' => 'Gender ID',
             'created_at' => 'Created At',
-            'updatead_at' => 'Updatead At',
+            'updated_at' => 'Updated At',
             'genderName' => Yii::t('app', 'Gender'),
             'userLink' => Yii::t('app', 'User'),
             'profileIdLink' => Yii::t('app', 'Profile'),

@@ -62,11 +62,6 @@ return [
            ['email', 'unique'],
 ]; }
 /* Your model attribute labels */
-public function attributeLabels() {
-return [
-/* Your other attribute labels */
-];
-}
 public function getProfile() {
 return $this->hasOne(Profile::className(), ['user_id' => 'id']); }
 
@@ -231,8 +226,7 @@ return $this->userType ? $this->userType->id : 'none'; }
  * @getProfile
  *
  */
-public function getProfile() {
-return $this->hasOne(Profile::className(), ['user_id' => 'id']); }
+
 /**
  * @getProfileId
  *

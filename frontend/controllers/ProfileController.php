@@ -56,7 +56,7 @@ class ProfileController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView()
     {
        if ($already_exists = RecordHelpers::userHas('profile')) {
             return $this->render('view', [
@@ -84,7 +84,7 @@ class ProfileController extends Controller
                 'model' => $this->findModel($already_exists),
                 ]);
             }
-        elseif ($model->load(Yii::$app->request->post()) && $model->save())
+        elseif ($model->load(Yii::$app->request->post()) && ($model->save()))
             { 
                 return $this->redirect(['view']);
             }
