@@ -60,6 +60,10 @@ return [
            ['email', 'required'],
            ['email', 'email'],
            ['email', 'unique'],
+          ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
+          [['status_id'],'in', 'range'=>array_keys($this->getStatusList())],
+
+
 ]; }
 /* Your model attribute labels */
 public function getProfile() {

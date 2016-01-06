@@ -17,6 +17,7 @@ class Status extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    const STATUS_ACTIVE = 1;
     public static function tableName()
     {
         return 'status';
@@ -31,8 +32,6 @@ class Status extends \yii\db\ActiveRecord
             [['status_name', 'status_value'], 'required'],
             [['status_value'], 'integer'],
             [['status_name'], 'string', 'max' => 45],
-            ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
-            [['status_id'],'in', 'range'=>array_keys($this->getStatusList())]
 
         ];
     }
