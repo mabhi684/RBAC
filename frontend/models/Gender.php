@@ -38,7 +38,7 @@ class Gender extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'gender_name' => 'Gender Name',
+            'gender_name' => 'Gender',
         ];
     }
 
@@ -47,6 +47,6 @@ class Gender extends \yii\db\ActiveRecord
  */
 public function getProfiles() {
 return $this->hasMany(Profile::className(), ['gender_id' => 'id']); }
-}
+
 
 }
