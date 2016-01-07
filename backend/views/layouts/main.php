@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use common\models\ValueHelpers;
 
 AppAsset::register($this);
 ?>
@@ -27,16 +28,39 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+    $is_admin = ValueHelpers::getRoleValue('Admin');
+    if (!Yii::$app->user->isGuest){
+   NavBar::begin([
+    'brandLabel' => 'Abhinav <i class="fa fa-plug"></i> Admin',
+    'brandUrl' => Yii::$app->homeUrl,
+    'options' => [
+           'class' => 'navbar-inverse navbar-fixed-top',
+      ],
+]);
+}
+else {
     NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
+      'brandLabel' => 'Abhinav Admin <i class="fa fa-plug"></i>',
+      'brandUrl' => Yii::$app->homeUrl,
+      'options' => [
+           'class' => 'navbar-inverse navbar-fixed-top',
+      ],
+]);
+}
+
+
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
     ];
+
+    if (!Yii::$app->user->isGuest&& Yii::$app->user->identity->role_id >= $is_admin) 
+    {
+      $menuItems[] = ['label' => 'Users', 'url' => ['user/index']];
+      $menuItems[] = ['label' => 'Profiles', 'url' => ['profiler/index']];
+      $menuItems[] = ['label' => 'Roles', 'url' => ['/role/index']];
+      $menuItems[] = ['label' => 'User Types', 'url' => ['/user-type/index']];
+      $menuItems[] = ['label' => 'Statuses', 'url' => ['/status/index']];
+}
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {

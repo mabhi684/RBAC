@@ -1,7 +1,9 @@
 <?php
 namespace common\models;
 use Yii;
-use yii\base\NotSupportedException; use yii\behaviors\TimestampBehavior; use yii\db\ActiveRecord;
+use yii\base\NotSupportedException; 
+use yii\behaviors\TimestampBehavior; 
+use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\web\IdentityInterface;
 use yii\helpers\Security;
@@ -11,6 +13,8 @@ use backend\models\UserType;
 use frontend\models\Profile;
 use yii\helpers\Url; 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+
 /**
  * User model
  *
@@ -35,6 +39,7 @@ return 'user'; }
  * behaviors
  */
 public function behaviors() {
+
 return [
 'timestamp' => [
 'class' => 'yii\behaviors\TimestampBehavior', 'attributes' => [

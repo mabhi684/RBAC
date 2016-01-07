@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\profile */
+/* @var $model frontend\models\Profile */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -20,11 +21,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthdate')->textInput() ?>
 
-    <?= $form->field($model, 'gender_id')->textInput() ?>
+    <?= $form->field($model, 'gender_id')->dropDownList($model->genderList,
+        ['prompt' => 'Please Choose One' ]);?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
